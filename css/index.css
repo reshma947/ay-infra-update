@@ -1,0 +1,645 @@
+.text-red-color {
+  color: red;
+}
+
+.bg-red-color {
+  background-color: red;
+}
+
+.navbar {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* .brick-section{
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+} */
+
+/* css for City Selection Modal */
+
+.city-card {
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  transition: 0.3s;
+  padding: 2px;
+  text-align: center;
+
+}
+
+.city-card:hover {
+  border-color: red;
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.city-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 8px;
+}
+
+
+
+
+
+.bg-img {
+  background-image: url('../images/banner-bg-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  /* Optional for overlay effect */
+}
+
+
+
+/* css for our-services cards */
+.service-card {
+  border: 1px solid red;
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+  font-size: 40px;
+  color: red;
+  margin-bottom: 15px;
+}
+
+.read-more-btn {
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 0 0 8px 8px;
+  padding: 10px 0;
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  border: 1px solid red;
+}
+
+.section-title span {
+  color: red;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Css for AY-image-section */
+@media (max-width: 767.98px) {
+  img.position-absolute {
+    display: block !important;
+    max-width: 120px !important;
+  }
+}
+
+/* css for our patners */
+.stats-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100px;
+}
+
+.stats-left,
+.stats-right {
+  flex: 1 1 50%;
+  color: white;
+  /* padding: 2rem 1rem; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-left {
+  background-color: black;
+  color: white;
+  clip-path: polygon(0 0, 95% 0, 85% 100%, 0% 100%);
+  z-index: 2;
+}
+
+.stats-right {
+  background-color: red;
+  color: white;
+  clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
+  margin-left: -10%;
+  z-index: 1;
+}
+
+.stat-item {
+  flex: 1 1 50%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
+  .stats-wrapper {
+    flex-direction: column;
+  }
+
+  .stats-left,
+  .stats-right {
+    clip-path: none;
+    margin-left: 0;
+    flex: 1 1 100%;
+    padding: 2rem 1rem;
+  }
+
+  .stat-item {
+    flex: 1 1 100%;
+  }
+}
+
+
+/* css for Who we are  */
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  /* border: 1px solid; */
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 50%;
+  display: block;
+}
+
+/* Gradient overlays */
+.video-gradient::before,
+.video-gradient::after,
+.video-gradient .left-gradient,
+.video-gradient .right-gradient {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  content: "";
+}
+
+.video-gradient::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 11%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255), transparent);
+}
+
+.video-gradient::after {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 11%;
+  background: linear-gradient(to top, rgba(255, 255, 255), transparent);
+}
+
+.video-gradient .left-gradient {
+  top: 0;
+  left: 0;
+  width: 8%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255), transparent);
+}
+
+.video-gradient .right-gradient {
+  top: 0;
+  right: 0;
+  width: 8%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255), transparent);
+}
+
+/* css for pricing-header-section */
+.pricing-header {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.bg-text-outline {
+  font-size: 5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px #f0f0f0;
+  /* text-stroke: 1px #f0f0f0; */
+  text-transform: uppercase;
+  position: absolute;
+  /* bottom:; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.main-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  /* color: #001e5a; */
+  color: black;
+  z-index: 1;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .bg-text-outline {
+    font-size: 3.5rem;
+    -webkit-text-stroke: 0.7px #f0f0f0;
+  }
+
+  .main-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bg-text-outline {
+    font-size: 2.5rem;
+  }
+
+  .main-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* css for pricing-cards-section */
+.pricing-card {
+  padding: 1.5rem 1rem;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top-left-radius: 0;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 0;
+}
+
+.bg-red {
+  background-color: red;
+  color: white;
+}
+
+.pricing-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.plan-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.price-decimal {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.feature-list {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.feature-list li {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.feature-list span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.btn-purchase {
+  margin-top: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  background: #2e2e2e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.text-color {
+  color: red;
+}
+
+.btn-purchase:hover {
+  background: #000;
+}
+
+/* Plan colors */
+.basic-color {
+  /* color: #9b59b6; */
+  color: red;
+}
+
+.basic-dot span {
+  /* background: #9b59b6; */
+  color: red;
+}
+
+.pro-color {
+  /* color: #e91e63; */
+  color: white;
+}
+
+.pro-dot span {
+  /* background: #e91e63; */
+  color: white;
+}
+
+.premium-color {
+  /* color: #00bcd4; */
+  color: red;
+}
+
+.premium-dot span {
+  /* background: #00bcd4; */
+  color: red;
+}
+
+
+/* css for two blur images-section */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+}
+
+.equal-height-row {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  min-height: 500px;
+}
+
+.equal-height-row>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  overflow: hidden;
+}
+
+.left-section,
+.right-section {
+  padding: 4rem 3rem;
+  color: white;
+  height: 100%;
+  overflow: hidden;
+}
+
+.left-section {
+  /* background-image: linear-gradient(to right, rgba(0, 23, 50, 0.8), rgba(0, 23, 50, 0.8)),  */
+  background-image: linear-gradient(to right, rgba(40, 65, 94, 0.8), rgba(40, 65, 94, 0.8)),
+    url("../images/building-img-1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.right-section {
+  /* background-image: linear-gradient(to left, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.8)),  */
+  background-image: linear-gradient(to left, rgba(255, 59, 59, 0.8), rgba(255, 59, 59, 0.8)),
+    url("../images/building-img-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.left-section .content,
+.right-section .content {
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.get-btn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+.get-btn:hover {
+  background-color: red;
+}
+
+.icon-list i {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.icon-list li {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .equal-height-row {
+    flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+    text-align: center;
+    padding: 2rem;
+  }
+}
+
+/* css for cost-estimator-section */
+.package-row {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.package-row:last-child {
+    border-bottom: none;
+}
+
+.city-label {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* css for coming-projects-section */
+.project-buttons {
+  margin-bottom: 25px;
+}
+
+.swiper {
+  padding-bottom: 40px;
+}
+
+.swiper-wrapper {
+  align-items: stretch !important;
+  /* Equal height slides */
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: red;
+  /* background-image: linear-gradient(to bottom right, rgba(255, 0, 0, 0.75), rgba(139, 0, 0, 0.75)); */
+  color: white;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+.pricing-project-header {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1rem;
+  /* background-color: #ffffff; */
+  overflow: hidden;
+  padding-bottom: 0px;
+}
+
+.bg-project-text-outline {
+  font-size: 5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px #f0f0f0;
+  /* text-stroke: 1px #f0f0f0; */
+  text-transform: uppercase;
+  position: absolute;
+  /* bottom:; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.main-project-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  /* color: #001e5a; */
+  color: black;
+  z-index: 1;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .bg-project-text-outline {
+    font-size: 3.5rem;
+    -webkit-text-stroke: 0.7px #f0f0f0;
+  }
+
+  .main-project-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bg-project-text-outline {
+    font-size: 2.5rem;
+  }
+
+  .main-project-title {
+    font-size: 1.25rem;
+  }
+}
+
+
+
+/* css for lets talk button */
+.fixed-contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1055;
+  /* high z-index ensures it's above other content */
+}
+
+.dropdown-menu-form {
+  padding: 15px;
+  width: 280px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .dropdown-menu-form {
+    width: 90vw;
+    max-width: 95%;
+  }
+
+  .fixed-contact {
+    right: 10px;
+    bottom: 20px;
+  }
+}

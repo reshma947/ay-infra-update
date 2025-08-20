@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost-Estimator</title>
+    <link rel="stylesheet" href="./css/cost-estimator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* css for lets talk button */
+        .fixed-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1055;
+            /* high z-index ensures it's above other content */
+        }
+
+        .dropdown-menu-form {
+            padding: 15px;
+            width: 280px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .dropdown-menu-form {
+                width: 90vw;
+                max-width: 95%;
+            }
+
+            .fixed-contact {
+                right: 10px;
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid p-0 m-0">
+        <nav class="navbar sticky-top navbar-expand-lg p-0">
+            <div class="container-fluid p-0 m-0">
+                <a class="navbar-brand ps-lg-5 p-0 m-0" href="./index.html">
+                    <img src="./images/AY logo.jpg" width="80px" class="img-fluid" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex justify-content-lg-around" id="navbarSupportedContent">
+                    <div class="bg-info"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold" aria-current="page" href="./index.html">Home </a>
+                        </li>
+                        <li class="nav-item ps-lg-4">
+                            <a class="nav-link fw-semibold" href="./about-us.html">About Us</a>
+                        </li>
+
+                        <li class="nav-item dropdown ps-lg-4">
+                            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="servicesDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                                <!-- <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./data-management.html">Data Management Service</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./sap-implementation-services.html">SAP Implementation Service</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./application-security-services.html">Application Security Service</a>
+                                </li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./iam-and-security-services.html">IAM and Security Service</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu" href="./grc-solutions.html">GRC
+                                        Solution by Elevate IT</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./sap-core-solutions.html">SAP Functional and Technical Consulting</a>
+                                </li> -->
+                            </ul>
+                        </li>
+                        <li class="nav-item ps-lg-4">
+                            <a class="nav-link fw-semibold" href="./cost-estimator.html">Cost - Estimator</a>
+                        </li>
+                        <li class="nav-item ps-lg-4">
+                            <a class="nav-link fw-semibold" href="./contact.html">Contact
+                                Us</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <section class="cost-estimator-section my-5">
+        <div class="container py-5">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Our Construction Packages</h2>
+            </div>
+
+            <!-- City Dropdown -->
+            <div class="text-center mb-4">
+                <span class="me-2"><i class="bi bi-geo-alt-fill text-danger"></i></span>
+                <span class="city-label" id="selectedCity">Chennai</span>
+                <select id="citySelect" class="form-select d-inline-block w-auto ms-2">
+                    <option value="Chennai" selected>Chennai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                </select>
+            </div>
+
+            <!-- Rate Info -->
+            <div class="row fw-semibold mb-2">
+                <div class="col-6">Package</div>
+                <div class="col-6 text-end">Rate (including GST)</div>
+            </div>
+
+            <!-- Package Rows -->
+            <div id="packages">
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Basic</div>
+                    <div class="col-6 text-end" id="basicRate">₹ 2250 /sqft (Incl. GST)</div>
+                </div>
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Classic</div>
+                    <div class="col-6 text-end" id="classicRate">₹ 2470 /sqft (Incl. GST)</div>
+                </div>
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Premium</div>
+                    <div class="col-6 text-end" id="premiumRate">₹ 2740 /sqft (Incl. GST)</div>
+                </div>
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Royale</div>
+                    <div class="col-6 text-end" id="royaleRate">₹ 3010 /sqft (Incl. GST)</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script>
+        const rates = {
+            Chennai: { basic: 2250, classic: 2470, premium: 2740, royale: 3010 },
+            Bangalore: { basic: 2300, classic: 2500, premium: 2800, royale: 3100 },
+            Hyderabad: { basic: 2200, classic: 2400, premium: 2700, royale: 3000 },
+            Mumbai: { basic: 2400, classic: 2600, premium: 2900, royale: 3200 },
+            Delhi: { basic: 2350, classic: 2550, premium: 2850, royale: 3150 }
+        };
+
+        const citySelect = document.getElementById("citySelect");
+        const selectedCity = document.getElementById("selectedCity");
+
+        citySelect.addEventListener("change", function () {
+            const city = this.value;
+            selectedCity.textContent = city;
+
+            document.getElementById("basicRate").textContent = `₹ ${rates[city].basic} /sqft (Incl. GST)`;
+            document.getElementById("classicRate").textContent = `₹ ${rates[city].classic} /sqft (Incl. GST)`;
+            document.getElementById("premiumRate").textContent = `₹ ${rates[city].premium} /sqft (Incl. GST)`;
+            document.getElementById("royaleRate").textContent = `₹ ${rates[city].royale} /sqft (Incl. GST)`;
+        });
+    </script>
+
+
+    <!-- Fixed "Let's Talk" Button + Dropdown -->
+    <div class="fixed-contact dropdown">
+        <button class="px-3 py-2 bg-red-color text-white border-0 dropdown-toggle rounded-5" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Let's Talk
+        </button>
+        <!-- <img src="./images/comment-img.png" height="50%" width="30%"> -->
+
+        <div class="dropdown-menu dropdown-menu-end dropdown-menu-form">
+            <form>
+                <div class="mb-2">
+                    <label for="name" class="form-label mb-1">Name</label>
+                    <input type="text" class="form-control form-control-sm" id="name" placeholder="John Doe">
+                </div>
+                <div class="mb-2">
+                    <label for="email" class="form-label mb-1">Email</label>
+                    <input type="email" class="form-control form-control-sm" id="email" placeholder="john@example.com">
+                </div>
+                <div class="mb-2">
+                    <label for="phone" class="form-label mb-1">Phone</label>
+                    <input type="tel" class="form-control form-control-sm" id="phone" placeholder="+91 98765 43210">
+                </div>
+                <div class="mb-2">
+                    <label for="query" class="form-label mb-1">Query</label>
+                    <textarea class="form-control form-control-sm" id="query" rows="2"
+                        placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm w-100">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="bg-red-color text-white mt-5">
+        <div class="container py-5">
+            <div class="row row-cols-1 row-cols-lg-3 justify-content-between">
+                <div class="mb-4 mb-md-0">
+                    <h4 class="fw-bold pb-2">Services</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="./about-us.html" class="text-white text-decoration-none d-block mb-1">About Us</a>
+                        </li>
+                        <li><a href="#" class="text-white text-decoration-none d-block mb-1">Services</a></li>
+                        <li><a href="./e-content.html"
+                                class="text-white text-decoration-none d-block mb-1">E-content</a></li>
+                        <li><a href="./career.html" class="text-white text-decoration-none d-block mb-1">Careers</a>
+                        </li>
+                        <li><a href="./contact.php" class="text-white text-decoration-none d-block mb-1">Contact</a>
+                        </li>
+                        <li><a href="./privacy.html"
+                                class="text-white text-decoration-none d-block fs-5 fw-bold mt-4"><span
+                                    class="border-3 border-end pe-2">Privacy Polices</span> Terms of Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info Column -->
+                <div>
+                    <h4 class="fw-bold pb-2">Contact Info</h4>
+                    <p class="mb-1">Address:</p>
+                    <p class="lh-sm mb-2">
+                        Pillar No-123, Wase Arcade,<br>
+                        Attapur, Hyderabad,<br>
+                        Telangana, 500048
+                    </p>
+                    <!-- <p class="mb-1">Email: <a href="mailto:elevateit@gmail.com"
+                            class="text-white text-decoration-underline">elevateit@gmail.com</a></p> -->
+                    <p class="mb-3">Contact No: +91 123-456-7890</p>
+                    <p class="fw-semibold fs-6 mb-2">Follow Us</p>
+                    <div class="d-flex gap-2">
+                        <!-- <a href="#"
+                            class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fa-brands fa-linkedin-in text-color-blue"></i>
+                        </a> -->
+                        <!-- <a href="#"
+                            class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fa-brands fa-twitter text-color-blue"></i>
+                        </a> -->
+                        <a href="#"
+                            class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fa-brands fa-facebook-f text-color-blue"></i>
+                        </a>
+                        <a href="#"
+                            class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fa-brands fa-instagram text-color-blue"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <img src="./images/footer-img.png" height="100%" width="100%">
+                </div>
+
+            </div>
+            <!-- Copyright -->
+            <p class="text-center mt-5 mb-0 medium">© 2025 AY Infra. All Rights Reserved.</p>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

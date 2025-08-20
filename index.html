@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ay Infra</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* css for lets talk button */
+    .fixed-contact {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1055;
+      /* high z-index ensures it's above other content */
+    }
+
+    .dropdown-menu-form {
+      padding: 15px;
+      width: 280px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .dropdown-menu-form {
+        width: 90vw;
+        max-width: 95%;
+      }
+
+      .fixed-contact {
+        right: 10px;
+        bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container-fluid p-0 m-0">
+    <nav class="navbar sticky-top navbar-expand-lg p-0">
+      <div class="container-fluid p-0 m-0">
+        <a class="navbar-brand ps-lg-5 p-0 m-0" href="./index.html">
+          <img src="./images/AY logo.jpg" width="80px" class="img-fluid" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-lg-flex justify-content-lg-around" id="navbarSupportedContent">
+          <div class="bg-info"></div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" aria-current="page" href="./index.html">Home </a>
+            </li>
+            <li class="nav-item ps-lg-4">
+              <a class="nav-link fw-semibold" href="./about-us.html">About Us</a>
+            </li>
+
+            <li class="nav-item dropdown ps-lg-4">
+              <a class="nav-link dropdown-toggle fw-semibold" href="#" id="servicesDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                <!-- <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./data-management.html">Data Management Service</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./sap-implementation-services.html">SAP Implementation Service</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./application-security-services.html">Application Security Service</a>
+                                </li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./iam-and-security-services.html">IAM and Security Service</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu" href="./grc-solutions.html">GRC
+                                        Solution by Elevate IT</a></li>
+                                <li><a class="dropdown-item" id="servicesDropdown-menu"
+                                        href="./sap-core-solutions.html">SAP Functional and Technical Consulting</a>
+                                </li> -->
+              </ul>
+            </li>
+            <li class="nav-item ps-lg-4">
+              <a class="nav-link fw-semibold" href="./cost-estimator.html">Cost - Estimator</a>
+            </li>
+            <li class="nav-item ps-lg-4">
+              <a class="nav-link fw-semibold" href="./contact.html">Contact
+                Us</a>
+            </li>
+          </ul>
+              <div class="p-0 m-0">
+      <span class="fw-semibold">Selected City : </span>
+      <span id="selectedCity" class="text-danger fw-bold">Not Selected</span>
+    </div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- ✅ City Selection Modal -->
+<div class="modal fade" id="cityModal" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content p-4">
+      <div class="row g-3">
+        <!-- Left Info -->
+        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center text-center p-3">
+          <h4 class="fw-bold">Select a City</h4>
+          <p>WE BUILD YOUR 'DREAM HOME'<br>
+          India's <b>NO.1 TECH</b> Powered Construction Company</p>
+        </div>
+        
+        <!-- Right Cities -->
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <div class="city-card mb-2" onclick="selectCity('Hyderabad')">
+            <img src="https://img.icons8.com/emoji/96/india-emoji.png" alt="Hyderabad">
+            <h6 class="fw-bold">Hyderabad</h6>
+          </div>
+          <div class="city-card mb-2" onclick="selectCity('Chennai')">
+            <img src="https://img.icons8.com/color/96/train-station.png" alt="Chennai">
+            <h6 class="fw-bold">Chennai</h6>
+          </div>
+          <div class="city-card" onclick="selectCity('Vijayawada')">
+            <img src="https://img.icons8.com/ios/100/buddha.png" alt="Vijayawada">
+            <h6 class="fw-bold">Vijayawada</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Show modal on page load
+  document.addEventListener("DOMContentLoaded", function() {
+    var cityModal = new bootstrap.Modal(document.getElementById('cityModal'));
+    cityModal.show();
+  });
+
+  // Function to select city
+  function selectCity(city) {
+    document.getElementById("selectedCity").innerText = city;
+    var cityModal = bootstrap.Modal.getInstance(document.getElementById('cityModal'));
+    cityModal.hide();
+  }
+</script>
+
+
+  <div class="container-fluid position-relative p-0">
+    <!-- ✅ Background Image -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-img z-n1"></div>
+
+    <!-- ✅ Main Content -->
+    <div class="min-vh-100 d-flex align-items-center">
+      <div class="container-fluid">
+        <div class="row g-0">
+          <!-- ✅ Left Column -->
+          <div class="col-lg-6 d-flex flex-column justify-content-center text-center text-lg-start px-4 py-5">
+            <h1 class="fw-bold text-black">
+              WE <span class="text-red-color">CONSTRUCT</span><br>
+              YOUR <br><span class="text-red-color">DREAM</span> PROJECTS
+            </h1>
+            <h6 class="fw-semibold text-black pt-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem tenetur, temporibus ad doloribus minima
+              tempora ex aliquam!
+            </h6>
+            <div>
+              <button class="fw-semibold px-4 py-2 mt-4 bg-red-color text-white border-0 rounded-2">
+                Book Appointment
+              </button>
+            </div>
+          </div>
+
+          <!-- ✅ Right Column Image (touches bottom & right) -->
+          <div class="col-lg-6 position-relative d-none d-lg-block">
+            <img src="./images/banner-img-3.png" alt="Hero Image"
+              class="position-absolute bottom-0 end-0 w-100 h-100 object-fit-cover" />
+          </div>
+
+          <!-- ✅ Image for mobile view (stacked) -->
+          <div class="col-12 d-block d-lg-none px-3 mt-4">
+            <img src="./images/banner-img-3.png" alt="Hero Image" class="img-fluid w-100 rounded" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="mb-5">
+        <h2 class="fw-bold section-title">OUR <span>SERVICES</span></h2>
+        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Service 1 -->
+        <div class="col-lg-3 col-md-6 ">
+          <div class="service-card text-center d-flex flex-column">
+            <div class="card-body">
+              <div class="service-icon">
+                <i class="fa-regular fa-building"></i>
+              </div>
+              <h5 class="fw-semibold">Residential <br>Construction</h5>
+              <p class="px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+            </div>
+            <a href="#" class="read-more-btn">Read more →</a>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="service-card text-center d-flex flex-column">
+            <div class="card-body">
+              <div class="service-icon">
+                <i class="fa-solid fa-house"></i>
+              </div>
+              <h5 class="fw-semibold">Commercial <br>Construction</h5>
+              <p class="px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+            </div>
+            <a href="#" class="read-more-btn">Read more →</a>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="service-card text-center d-flex flex-column">
+            <div class="card-body">
+              <div class="service-icon">
+                <i class="fa-solid fa-hammer"></i>
+              </div>
+              <h5 class="fw-semibold">Renovation <br>Remodeling</h5>
+              <p class="px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+            </div>
+            <a href="#" class="read-more-btn">Read more →</a>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="service-card text-center d-flex flex-column">
+            <div class="card-body">
+              <div class="service-icon">
+                <i class="fa-solid fa-couch"></i>
+              </div>
+              <h5 class="fw-semibold">Interiors <br>Designs</h5>
+              <p class="px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+            </div>
+            <a href="#" class="read-more-btn">Read more →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="position-relative overflow-hidden py-5 mt-3">
+    <!-- 🔵 Top-Left Image -->
+    <img src="./images/a-img.png" alt="Top Left" class="position-absolute top-0 start-0 img-fluid d-none d-lg-block"
+      style="max-width: 350px; height: auto; z-index: 0;" />
+
+    <!-- 🔴 Bottom-Right Image -->
+    <img src="./images/y-img.png" alt="Bottom Right"
+      class="position-absolute bottom-0 end-0 img-fluid d-none d-lg-block"
+      style="max-width: 350px; height: auto; z-index: 0;" />
+
+    <!-- 🟡 Main Content -->
+    <div class="container position-relative z-1">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-4">Headline of the section <span class="text-red-color">AY-images Section</span></h2>
+          <p class="mb-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, eius.
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, eius.
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, eius.
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, eius.
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, eius.
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, eius.
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Facilis explicabo minus magni provident reiciendis ipsum illo deleniti esse!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, eius.
+
+
+          </p>
+          <button class="px-4 py-2 fw-semibold bg-red-color text-white border-0 rounded-2">Explore More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="my-5">
+    <div class="container-fluid px-0">
+      <div class="stats-wrapper">
+        <!-- Left Column -->
+        <div class="stats-left">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <div class="stat-value">109</div>
+            <div class="stat-label">Expert Worker</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-building-user"></i></div>
+            <div class="stat-value">485</div>
+            <div class="stat-label">Happy Client</div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="stats-right">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="stat-value">789</div>
+            <div class="stat-label">Complete Project</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-building-shield"></i></div>
+            <div class="stat-value">890</div>
+            <div class="stat-label">Running Project</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="my-5 pt-5">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- <h2 class="fw-bold pb-3">WHO <span class="text-red-color">We
+              Are</span></h2> -->
+          <div class="">
+            <img src="./images/who-we-are-img.jpg" height="100%" width="50%">
+          </div>
+          <p class="fs-6 pt-4">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, aperiam, voluptatem ratione placeat optio
+            omnis voluptates culpa beatae ipsum excepturi dolore fugiat neque sed dicta ex, officia quam possimus
+            laborum!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, aperiam, voluptatem ratione placeat optio
+            omnis voluptates culpa beatae ipsum excepturi dolore fugiat neque sed dicta ex, officia quam possimus
+            laborum!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, aperiam, voluptatem ratione placeat optio
+            omnis voluptates culpa beatae ipsum excepturi dolore fugiat neque sed dicta ex, officia quam possimus
+            laborum!
+
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <div class="video-wrapper video-gradient">
+            <video autoplay muted loop playsinline>
+              <source src="./videos/New Video .mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+            <div class="left-gradient"></div>
+            <div class="right-gradient"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="py-5">
+    <section class="pricing-header">
+      <div class="bg-text-outline">FLEXIBLE</div>
+      <h2 class="main-title">PRICING PLAN</h2>
+    </section>
+    <div class="container py-4">
+      <div class="row justify-content-center g-4">
+
+        <!-- Basic Plan -->
+        <div class="col-md-6 col-lg-4">
+          <div class="pricing-card">
+            <div class="plan-title basic-color">Basic</div>
+            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <div class="plan-price basic-color">
+              <span></span>999<span class="price-decimal">.99</span>
+            </div>
+            <p class="text-muted">per month</p>
+            <ul class="feature-list basic-dot list-unstyled">
+              <li><span></span> Lorem ipsum dolor sit amet</li>
+              <li><span></span> Consectetur adipiscing elit</li>
+            </ul>
+            <button class="btn-purchase">Purchase</button>
+          </div>
+        </div>
+
+        <!-- Professional Plan -->
+        <div class="col-md-6 col-lg-4">
+          <div class="pricing-card bg-red">
+            <div class="plan-title pro-color">Profesional</div>
+            <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <div class="plan-price pro-color">
+              <span></span>1049<span class="price-decimal">.99</span>
+            </div>
+            <p class="text-white">per month</p>
+            <ul class="feature-list pro-dot list-unstyled">
+              <li><span></span> Lorem ipsum dolor sit amet</li>
+              <li><span></span> Consectetur adipiscing elit</li>
+            </ul>
+            <button class="btn-purchase bg-white text-color">Purchase</button>
+          </div>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="col-md-6 col-lg-4">
+          <div class="pricing-card">
+            <div class="plan-title premium-color">Premium</div>
+            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <div class="plan-price premium-color">
+              <span></span>1499<span class="price-decimal">.99</span>
+            </div>
+            <p class="text-muted">per month</p>
+            <ul class="feature-list premium-dot list-unstyled">
+              <li><span></span> Lorem ipsum dolor sit amet</li>
+              <li><span></span> Consectetur adipiscing elit</li>
+            </ul>
+            <button class="btn-purchase">Purchase</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="pricing-header mt-5">
+    <div class="bg-text-outline">OPERATE</div>
+    <h2 class="main-title">How It Works</h2>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 pt-5">
+        <p>At our firm, we follow a streamlined, end-to-end process to bring your vision to life. It begins with a
+          thorough consultation where we understand your goals, budget, and site specifications. Our team then develops
+          detailed architectural and structural plans, ensuring compliance with all regulations and securing necessary
+          approvals. </p>
+      </div>
+
+      <div class="col-lg-9 bg-warning p-0 m-0">
+        <img src="./images/how-it-works-img.jpg" height="100%" width="100%">
+      </div>
+    </div>
+
+  </div>
+
+
+  <section class="mt-5">
+    <div class="container-fluid">
+      <div class="row equal-height-row">
+        <!-- Left Column -->
+        <div class="col-lg-6 ps-5 left-section">
+          <div class="content">
+            <h6 class="fw-bold mb-3">Sustainability</h6>
+            <h2 class="fw-bold mb-4">Committed To Keep<br> People Healthy & Safe</h2>
+            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button class="btn get-btn">GET IN TOUCH</button>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-6 ps-5 right-section">
+          <div class="content">
+            <h4 class="fw-bold mb-4">We Follow Best Practices</h4>
+            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta
+              dapibus.</p>
+            <ul class="list-unstyled icon-list">
+              <li><i class="bi bi-recycle text-white"></i> Sustainability</li>
+              <li><i class="bi bi-clock-history text-white"></i> Project On Time</li>
+              <li><i class="bi bi-display text-white"></i> Modern Technology</li>
+              <li><i class="bi bi-vector-pen text-white"></i> Latest Designs</li>
+              <li><i class="bi bi-star text-white"></i> Innovation</li>
+              <li><i class="bi bi-graph-up text-white"></i> Efficiency</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <section class="cost-estimator-section">
+        <div class="container py-5">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Our Construction Packages</h2>
+            </div>
+
+            <!-- City Dropdown -->
+            <div class="text-center mb-4">
+                <span class="me-2"><i class="bi bi-geo-alt-fill text-danger"></i></span>
+                <span class="city-label" id="selectedCity">Chennai</span>
+                <select id="citySelect" class="form-select d-inline-block w-auto ms-2">
+                    <option value="Chennai" selected>Chennai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                </select>
+            </div>
+
+            <!-- Rate Info -->
+            <div class="row fw-semibold mb-2">
+                <div class="col-6">Package</div>
+                <div class="col-6 text-end">Rate (including GST)</div>
+            </div>
+
+            <!-- Package Rows -->
+            <div id="packages">
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Basic</div>
+                    <div class="col-6 text-end" id="basicRate">₹ 2250 /sqft (Incl. GST)</div>
+                </div>
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Classic</div>
+                    <div class="col-6 text-end" id="classicRate">₹ 2470 /sqft (Incl. GST)</div>
+                </div>
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Premium</div>
+                    <div class="col-6 text-end" id="premiumRate">₹ 2740 /sqft (Incl. GST)</div>
+                </div>
+                <div class="row package-row">
+                    <div class="col-6 fw-bold">Royale</div>
+                    <div class="col-6 text-end" id="royaleRate">₹ 3010 /sqft (Incl. GST)</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script>
+        const rates = {
+            Chennai: { basic: 2250, classic: 2470, premium: 2740, royale: 3010 },
+            Bangalore: { basic: 2300, classic: 2500, premium: 2800, royale: 3100 },
+            Hyderabad: { basic: 2200, classic: 2400, premium: 2700, royale: 3000 },
+            Mumbai: { basic: 2400, classic: 2600, premium: 2900, royale: 3200 },
+            Delhi: { basic: 2350, classic: 2550, premium: 2850, royale: 3150 }
+        };
+
+        const citySelect = document.getElementById("citySelect");
+        const selectedCity = document.getElementById("selectedCity");
+
+        citySelect.addEventListener("change", function () {
+            const city = this.value;
+            selectedCity.textContent = city;
+
+            document.getElementById("basicRate").textContent = `₹ ${rates[city].basic} /sqft (Incl. GST)`;
+            document.getElementById("classicRate").textContent = `₹ ${rates[city].classic} /sqft (Incl. GST)`;
+            document.getElementById("premiumRate").textContent = `₹ ${rates[city].premium} /sqft (Incl. GST)`;
+            document.getElementById("royaleRate").textContent = `₹ ${rates[city].royale} /sqft (Incl. GST)`;
+        });
+    </script>
+
+
+  <section class="py-5 coming-projects-section">
+    <div class="container-fluid bg-body-tertiary py-5 .box-shadow">
+      <!-- Top Buttons -->
+      <div class="row project-buttons m-0 pb-5">
+        <div class="col-lg-6 pricing-project-header">
+          <div class="bg-project-text-outline">PROJECTS</div>
+          <h2 class="main-project-title">PROJECTS</h2>
+        </div>
+
+        <div class="col-lg-6 d-flex justify-content-between align-items-center">
+          <button class="btn bg-black text-white me-2" onclick="filterProjects('completed')">Completed Projects</button>
+          <button class="bg-red-color text-white border-0 px-4 py-2 rounded-2 me-2"
+            onclick="filterProjects('ongoing')">Ongoing Projects</button>
+          <button class="btn bg-black text-white" onclick="filterProjects('upcoming')">Upcoming Projects</button>
+        </div>
+      </div>
+
+      <!-- Main Section -->
+      <div class="row">
+        <!-- Navigation Buttons -->
+        <div class="col-lg-3 d-flex flex-column  align-items-center justify-content-center mb-4">
+          <button class="bg-red-color text-white border-0 px-4 py-2 rounded-2 mb-2" id="nextBtn">Next →</button>
+          <button class="btn bg-black text-white px-4 py-2" id="prevBtn">← Prev</button>
+
+        </div>
+
+        <!-- Projects Display -->
+        <div class="col-lg-9">
+          <!-- Completed Section -->
+          <div class="project-section" id="completed">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-1.jpg" class="project-image" alt="Completed 1">
+                    <div class="project-content">
+                      <h5>Completed Project 1</h5>
+                      <p>Designed and delivered in 6 months. Urban residential complex.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-2.jpg" class="project-image" alt="Completed 2">
+                    <div class="project-content">
+                      <h5>Completed Project 2</h5>
+                      <p>High-end commercial tower in metro city with smart interiors.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-3.jpg" class="project-image" alt="Completed 3">
+                    <div class="project-content">
+                      <h5>Completed Project 3</h5>
+                      <p>Modern villa project in Bangalore with solar roofing.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-2.jpg" class="project-image" alt="Completed 2">
+                    <div class="project-content">
+                      <h5>Completed Project 2</h5>
+                      <p>High-end commercial tower in metro city with smart interiors.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Ongoing Section -->
+          <div class="project-section d-none" id="ongoing">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-4.jpg" class="project-image" alt="Ongoing 1">
+                    <div class="project-content">
+                      <h5>Ongoing Project 1</h5>
+                      <p>Phase 2 nearing completion with premium materials.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-5.jpg" class="project-image" alt="Ongoing 2">
+                    <div class="project-content">
+                      <h5>Ongoing Project 2</h5>
+                      <p>Office space innovation hub under development.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-6.jpg" class="project-image" alt="Ongoing 3">
+                    <div class="project-content">
+                      <h5>Ongoing Project 3</h5>
+                      <p>Smart building integration with IoT features.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-5.jpg" class="project-image" alt="Ongoing 2">
+                    <div class="project-content">
+                      <h5>Ongoing Project 2</h5>
+                      <p>Office space innovation hub under development.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming Section -->
+          <div class="project-section d-none" id="upcoming">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-7.jpg" class="project-image" alt="Upcoming 1">
+                    <div class="project-content">
+                      <h5>Upcoming Project 1</h5>
+                      <p>Green housing community starting in Jan 2026.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-8.jpg" class="project-image" alt="Upcoming 2">
+                    <div class="project-content">
+                      <h5>Upcoming Project 2</h5>
+                      <p>New campus for IT hub in Hyderabad planned.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-9.jpg" class="project-image" alt="Upcoming 3">
+                    <div class="project-content">
+                      <h5>Upcoming Project 3</h5>
+                      <p>Retail and business plaza with rooftop gardens.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="project-card">
+                    <img src="./images/building-img-8.jpg" class="project-image" alt="Upcoming 2">
+                    <div class="project-content">
+                      <h5>Upcoming Project 2</h5>
+                      <p>New campus for IT hub in Hyderabad planned.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- col-lg-9 -->
+      </div> <!-- row -->
+    </div> <!-- container -->
+
+  </section>
+
+  <script>
+    let swipers = [];
+
+    function initSwipers() {
+      document.querySelectorAll('.mySwiper').forEach((el, index) => {
+        swipers[index] = new Swiper(el, {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          navigation: false,
+          speed: 600,
+          breakpoints: {
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 }
+          }
+        });
+      });
+    }
+
+    function filterProjects(type) {
+      document.querySelectorAll('.project-section').forEach(section => {
+        section.classList.add('d-none');
+      });
+      document.getElementById(type).classList.remove('d-none');
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initSwipers();
+
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        const swiper = document.querySelector('.project-section:not(.d-none) .mySwiper').swiper;
+        swiper.slidePrev();
+      });
+
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        const swiper = document.querySelector('.project-section:not(.d-none) .mySwiper').swiper;
+        swiper.slideNext();
+      });
+
+      // Show Completed by default
+      filterProjects('completed');
+    });
+  </script>
+
+
+  <div class="container-fluid brick-section">
+    <div class="row">
+      <div class="col-lg-5 p-0 m-0">
+        <img src="./images/brick-img.png" height="100%" width="80%">
+      </div>
+
+      <div class="col-lg-6">
+        <div>
+          <div class="">
+            <img src="./images/media-articles-img.png" height="100%" width="80%">
+          </div>
+          <!-- <h3 class="fw-semibold pb-3">Media - Articles on website</h3> -->
+          <p class="pt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam esse optio autem temporibus
+            praesentium animi molestias odit consequuntur porro ratione, eligendi placeat deserunt impedit obcaecati,
+            commodi labore soluta, deleniti natus.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui accusantium rerum velit sint eum iste error
+            tempore quos ducimus laborum animi hic corrupti repellendus quasi quibusdam, voluptates, consequatur labore
+            quidem?
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus autem optio voluptatum aspernatur deleniti
+            voluptatibus quisquam quam reiciendis provident, praesentium libero corrupti magni debitis ab quis dolore
+            enim maxime.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <section class="py-5">
+    <div class="container">
+ <h2 class="text-center fw-bold mb-4 text-red-color">FAQs</h2>
+      <div class="row row-cols-lg-2">
+   
+
+      <div class="accordion m-0 p-0" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne"
+              aria-expanded="true" aria-controls="faqCollapseOne">
+              What home construction services does Brick &amp; Bolt offer?
+            </button>
+          </h2>
+          <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne"
+            data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Brick &amp; Bolt offers end-to-end home construction services including preparation of customised plans,
+              detailed quotations, complete construction, site monitoring and quality control.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+              How much time will it take to complete home construction in Hyderabad?
+            </button>
+          </h2>
+          <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo"
+            data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              The timeline depends on the project size and requirements. Typically, construction projects take several
+              months to complete, but a precise schedule is provided after planning and approval.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+              Do I have to pay the full amount before the home construction starts?
+            </button>
+          </h2>
+          <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree"
+            data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              No, payment is made in stages as per the construction progress. Initial booking and milestone-based
+              payments make it flexible for customers.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+              What warranty or post-construction support does Brick &amp; Bolt offer?
+            </button>
+          </h2>
+          <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour"
+            data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Brick &amp; Bolt provides warranty and dedicated post-construction support ensuring quality and durability
+              of the project.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-0 p-0">
+        <img src="./images/faq-img.jpg">
+      </div>
+
+
+      </div>
+
+  
+
+    </div>
+  </section>
+
+
+
+
+
+  
+
+
+
+  <!-- Fixed "Let's Talk" Button + Dropdown -->
+  <div class="fixed-contact dropdown">
+    <button class="px-3 py-2 bg-red-color text-white border-0 dropdown-toggle rounded-5" type="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      Let's Talk
+    </button>
+    <!-- <img src="./images/comment-img.png" height="50%" width="30%"> -->
+
+    <div class="dropdown-menu dropdown-menu-end dropdown-menu-form">
+      <form>
+        <div class="mb-2">
+          <label for="name" class="form-label mb-1">Name</label>
+          <input type="text" class="form-control form-control-sm" id="name" placeholder="John Doe">
+        </div>
+        <div class="mb-2">
+          <label for="email" class="form-label mb-1">Email</label>
+          <input type="email" class="form-control form-control-sm" id="email" placeholder="john@example.com">
+        </div>
+        <div class="mb-2">
+          <label for="phone" class="form-label mb-1">Phone</label>
+          <input type="tel" class="form-control form-control-sm" id="phone" placeholder="+91 98765 43210">
+        </div>
+        <div class="mb-2">
+          <label for="query" class="form-label mb-1">Query</label>
+          <textarea class="form-control form-control-sm" id="query" rows="2" placeholder="Your message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm w-100">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <section class="bg-red-color text-white mt-5">
+    <div class="container py-5">
+      <div class="row row-cols-1 row-cols-lg-3 justify-content-between">
+        <div class="mb-4 mb-md-0">
+          <h4 class="fw-bold pb-2">Services</h4>
+          <ul class="list-unstyled">
+            <li><a href="./about-us.html" class="text-white text-decoration-none d-block mb-1">About Us</a>
+            </li>
+            <li><a href="#" class="text-white text-decoration-none d-block mb-1">Services</a></li>
+            <li><a href="./e-content.html" class="text-white text-decoration-none d-block mb-1">E-content</a></li>
+            <li><a href="./career.html" class="text-white text-decoration-none d-block mb-1">Careers</a>
+            </li>
+            <li><a href="./contact.php" class="text-white text-decoration-none d-block mb-1">Contact</a>
+            </li>
+            <li><a href="./privacy.html" class="text-white text-decoration-none d-block fs-5 fw-bold mt-4"><span
+                  class="border-3 border-end pe-2">Privacy Polices</span> Terms of Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info Column -->
+        <div>
+          <h4 class="fw-bold pb-2">Contact Info</h4>
+          <p class="mb-1">Address:</p>
+          <p class="lh-sm mb-2">
+            Pillar No-123, Wase Arcade,<br>
+            Attapur, Hyderabad,<br>
+            Telangana, 500048
+          </p>
+          <!-- <p class="mb-1">Email: <a href="mailto:elevateit@gmail.com"
+                            class="text-white text-decoration-underline">elevateit@gmail.com</a></p> -->
+          <p class="mb-3">Contact No: +91 123-456-7890</p>
+          <p class="fw-semibold fs-6 mb-2">Follow Us</p>
+          <div class="d-flex gap-2">
+            <!-- <a href="#"
+                            class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fa-brands fa-linkedin-in text-color-blue"></i>
+                        </a> -->
+            <!-- <a href="#"
+                            class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fa-brands fa-twitter text-color-blue"></i>
+                        </a> -->
+            <a href="#"
+              class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+              style="width: 32px; height: 32px;">
+              <i class="fa-brands fa-facebook-f text-color-blue"></i>
+            </a>
+            <a href="#"
+              class="bg-white text-decoration-none rounded-3 d-inline-flex align-items-center justify-content-center"
+              style="width: 32px; height: 32px;">
+              <i class="fa-brands fa-instagram text-color-blue"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <img src="./images/footer-img.png" height="100%" width="100%">
+        </div>
+
+      </div>
+      <!-- Copyright -->
+      <p class="text-center mt-5 mb-0 medium">© 2025 AY Infra. All Rights Reserved.</p>
+    </div>
+  </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+.text-red-color {
+    color: red;
+}
+
+.bg-red-color {
+    background-color: red;
+}
+
+.navbar {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* css for cost-estimator-section */
+.package-row {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.package-row:last-child {
+    border-bottom: none;
+}
+
+.city-label {
+    font-weight: bold;
+    color: #e74c3c;
+}
