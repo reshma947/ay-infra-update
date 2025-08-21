@@ -29,6 +29,15 @@
 .navbar {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
+.headline-big{
+  font-size: 4rem;
+  font-weight: 900;
+}
+.headline-small{
+  font-size: 1.57rem;
+  font-weight: 600;
+}
 </style>
 </head>
 <body>
@@ -88,11 +97,14 @@
   </div>
 
 <div class="container my-5">
-  <!-- ✅ Row 1: Heading + Image -->
-  <div class="row align-items-center justify-content-center text-end">
+
+  <div class="row justify-content-center mt-0"> <!-- mt-0 makes it touch row 1 -->
+    <div class="col-lg-8 col-md-10 col-12">
+
+       <div class="row align-items-center justify-content-center text-start p-0 m-0">
     <div class="col-md-6">
-      <h2 class="fw-bold text-red-color">AY INFRA</h2>
-      <h6 class="fw-semibold">BUILDERS AND DEVELOPERS</h6>
+      <h1 class="fw-bold text-red-color headline-big lh-1 ps-4">AY INFRA</h1>
+      <h6 class="fw-semibold headline-small lh-1 ps-4">BUILDERS & DEVELOPERS</h6>
     </div>
     <div class="col-md-6">
       <img src="./images/contact-us-img.png" alt="Contact Us"
@@ -100,9 +112,6 @@
     </div>
   </div>
 
-  <!-- ✅ Row 2: Contact Form -->
-  <div class="row justify-content-center mt-0"> <!-- mt-0 makes it touch row 1 -->
-    <div class="col-lg-8 col-md-10 col-12">
       <div class="card shadow-lg p-4 border-0">
         <h3 class="text-center mb-4">Contact Us</h3>
         <form>
@@ -112,6 +121,9 @@
           </div>
           <div class="mb-3">
             <input type="email" class="form-control" placeholder="Your Email" required>
+          </div>
+            <div class="mb-3">
+            <input type="phone-no" class="form-control" placeholder="Phone Number" required>
           </div>
           </div>
        
@@ -123,7 +135,7 @@
             <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary px-4">Send Message</button>
+            <button type="submit" class="px-4 py-2 border-0 bg-red-color text-white rounded-3 fw-semibold">Send Message</button>
           </div>
         </form>
       </div>
@@ -133,18 +145,33 @@
 
 <div class="container py-5">
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, adipisci veniam ducimus earum pariatur facilis harum at eius. Facilis temporibus tempore dicta aliquam ducimus aperiam quis ab odio minima nobis?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sapiente accusantium cum, porro eveniet error suscipit vitae assumenda minus adipisci, at quod exercitationem, ut sint natus! Nisi culpa quia nihil.
+  </p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, adipisci veniam ducimus earum pariatur facilis harum at eius. Facilis temporibus tempore dicta aliquam ducimus aperiam quis ab odio minima nobis?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sapiente accusantium cum, porro eveniet error suscipit vitae assumenda minus adipisci, at quod exercitationem, ut sint natus! Nisi culpa quia nihil.
   </p>
 
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sapiente accusantium cum, porro eveniet error suscipit vitae assumenda minus adipisci, at quod exercitationem, ut sint natus! Nisi culpa quia nihil?</p>
 
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, adipisci veniam ducimus earum pariatur facilis harum at eius. Facilis temporibus tempore dicta aliquam ducimus aperiam quis ab odio minima nobis?
-  </p>
-
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sapiente accusantium cum, porro eveniet error suscipit vitae assumenda minus adipisci, at quod exercitationem, ut sint natus! Nisi culpa quia nihil?</p>
 </div>
 
 
+<div class="container">
+  <div class="d-flex">
+     <div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3808.4371457619586!2d78.41863677382794!3d17.342685604094005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9735c7db0de5%3A0xb616e0dac58b3a20!2sAY%20INFRA%20BUILDERS%20AND%20DEVELOPERS%20-%20construction%20%2C%20real%20estate%20%2C%20interior%20design!5e0!3m2!1sen!2sin!4v1755769734994!5m2!1sen!2sin" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="ps-4">
+    <h4>Office Address</h4>
+    <p>Pillar no. 235, Inner Ring Rd, opposite Fish Building,<br> near NR convention, Rajendra nagar,<br> Hyderabad, Telangana 500052</p>
+  <p></p>
+  
+  </div>
+  </div>
+ 
+
+</div>
 
   <section class="bg-red-color text-white mt-5">
     <div class="container py-5">
