@@ -102,10 +102,10 @@
                 Us</a>
             </li>
           </ul>
-              <div class="p-0 m-0">
-      <span class="fw-semibold">Selected City : </span>
-      <span id="selectedCity" class="text-danger fw-bold">Not Selected</span>
-    </div>
+          <div class="p-0 m-0">
+            <span class="fw-semibold">Selected City : </span>
+            <span id="modalSelectedCity" class="text-danger fw-bold">Not Selected</span>
+          </div>
 
         </div>
       </div>
@@ -114,51 +114,53 @@
 
 
   <!-- ✅ City Selection Modal -->
-<div class="modal fade" id="cityModal" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-  <div class="modal-dialog modal-dialog-centered modal-md">
-    <div class="modal-content p-4">
-      <div class="row g-3">
-        <!-- Left Info -->
-        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center text-center p-3">
-          <h4 class="fw-bold">Select a City</h4>
-          <p>WE BUILD YOUR 'DREAM HOME'<br>
-          India's <b>NO.1 TECH</b> Powered Construction Company</p>
-        </div>
-        
-        <!-- Right Cities -->
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <div class="city-card mb-2" onclick="selectCity('Hyderabad')">
-            <img src="https://img.icons8.com/emoji/96/india-emoji.png" alt="Hyderabad">
-            <h6 class="fw-bold">Hyderabad</h6>
+  <div class="modal fade" id="cityModal" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content p-4">
+        <div class="row g-3">
+          <!-- Left Info -->
+          <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center text-center p-3">
+            <h4 class="fw-bold">Select a City</h4>
+            <p>WE BUILD YOUR 'DREAM HOME'<br>
+              India's <b>NO.1 TECH</b> Powered Construction Company</p>
           </div>
-          <div class="city-card mb-2" onclick="selectCity('Chennai')">
-            <img src="https://img.icons8.com/color/96/train-station.png" alt="Chennai">
-            <h6 class="fw-bold">Chennai</h6>
-          </div>
-          <div class="city-card" onclick="selectCity('Vijayawada')">
-            <img src="https://img.icons8.com/ios/100/buddha.png" alt="Vijayawada">
-            <h6 class="fw-bold">Vijayawada</h6>
+
+          <!-- Right Cities -->
+          <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <div class="city-card mb-2" onclick="selectModalCity('Hyderabad')">
+              <img src="https://img.icons8.com/emoji/96/india-emoji.png" alt="Hyderabad">
+              <h6 class="fw-bold">Hyderabad</h6>
+            </div>
+            <div class="city-card mb-2" onclick="selectModalCity('Chennai')">
+              <img src="https://img.icons8.com/color/96/train-station.png" alt="Chennai">
+              <h6 class="fw-bold">Chennai</h6>
+            </div>
+            <div class="city-card" onclick="selectModalCity('Vijayawada')">
+              <img src="https://img.icons8.com/ios/100/buddha.png" alt="Vijayawada">
+              <h6 class="fw-bold">Vijayawada</h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  // Show modal on page load
-  document.addEventListener("DOMContentLoaded", function() {
-    var cityModal = new bootstrap.Modal(document.getElementById('cityModal'));
-    cityModal.show();
-  });
 
-  // Function to select city
-  function selectCity(city) {
-    document.getElementById("selectedCity").innerText = city;
-    var cityModal = bootstrap.Modal.getInstance(document.getElementById('cityModal'));
-    cityModal.hide();
-  }
-</script>
+  <script>
+    // Show modal on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      var cityModal = new bootstrap.Modal(document.getElementById('cityModal'));
+      cityModal.show();
+    });
+
+    // Function to select city from modal
+    function selectModalCity(city) {
+      document.getElementById("modalSelectedCity").innerText = city;
+      var cityModal = bootstrap.Modal.getInstance(document.getElementById('cityModal'));
+      cityModal.hide();
+    }
+  </script>
 
 
   <div class="container-fluid position-relative p-0">
@@ -394,7 +396,6 @@
     <div class="container py-4">
       <div class="row justify-content-center g-4">
 
-        <!-- Basic Plan -->
         <div class="col-md-6 col-lg-4">
           <div class="pricing-card">
             <div class="plan-title basic-color">Basic</div>
@@ -411,7 +412,6 @@
           </div>
         </div>
 
-        <!-- Professional Plan -->
         <div class="col-md-6 col-lg-4">
           <div class="pricing-card bg-red">
             <div class="plan-title pro-color">Profesional</div>
@@ -428,7 +428,6 @@
           </div>
         </div>
 
-        <!-- Premium Plan -->
         <div class="col-md-6 col-lg-4">
           <div class="pricing-card">
             <div class="plan-title premium-color">Premium</div>
@@ -448,6 +447,7 @@
       </div>
     </div>
   </section>
+
 
 
 
@@ -512,77 +512,203 @@
     </div>
   </section>
 
-      <section class="cost-estimator-section">
-        <div class="container py-5">
-            <div class="text-center mb-4">
-                <h2 class="fw-bold">Our Construction Packages</h2>
-            </div>
+<section class="cost-estimator-section">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
 
-            <!-- City Dropdown -->
-            <div class="text-center mb-4">
-                <span class="me-2"><i class="bi bi-geo-alt-fill text-danger"></i></span>
-                <span class="city-label" id="selectedCity">Chennai</span>
-                <select id="citySelect" class="form-select d-inline-block w-auto ms-2">
-                    <option value="Chennai" selected>Chennai</option>
-                    <option value="Bangalore">Bangalore</option>
-                    <option value="Hyderabad">Hyderabad</option>
-                    <option value="Mumbai">Mumbai</option>
-                    <option value="Delhi">Delhi</option>
-                </select>
-            </div>
-
-            <!-- Rate Info -->
-            <div class="row fw-semibold mb-2">
-                <div class="col-6">Package</div>
-                <div class="col-6 text-end">Rate (including GST)</div>
-            </div>
-
-            <!-- Package Rows -->
-            <div id="packages">
-                <div class="row package-row">
-                    <div class="col-6 fw-bold">Basic</div>
-                    <div class="col-6 text-end" id="basicRate">₹ 2250 /sqft (Incl. GST)</div>
-                </div>
-                <div class="row package-row">
-                    <div class="col-6 fw-bold">Classic</div>
-                    <div class="col-6 text-end" id="classicRate">₹ 2470 /sqft (Incl. GST)</div>
-                </div>
-                <div class="row package-row">
-                    <div class="col-6 fw-bold">Premium</div>
-                    <div class="col-6 text-end" id="premiumRate">₹ 2740 /sqft (Incl. GST)</div>
-                </div>
-                <div class="row package-row">
-                    <div class="col-6 fw-bold">Royale</div>
-                    <div class="col-6 text-end" id="royaleRate">₹ 3010 /sqft (Incl. GST)</div>
-                </div>
-            </div>
+        <!-- Heading -->
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">Our Construction Packages</h2>
         </div>
 
-    </section>
+        <!-- City Selection -->
+        <div class="text-center mb-4">
+          <span class="me-2"><i class="bi bi-geo-alt-fill text-danger"></i></span>
+          <span class="city-label" id="packageSelectedCity">Chennai</span>
+          <select id="packageCitySelect" class="form-select d-inline-block w-auto ms-2">
+            <option value="Chennai" selected>Chennai</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <!-- <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option> -->
+          </select>
+        </div>
+
+        <!-- Package Selection with Radio Buttons -->
+        <div class="fw-semibold mb-3">Choose Package:</div>
+        <div class="list-group">
+          <label class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <input type="radio" name="packageOption" value="basic" class="form-check-input me-2" checked>
+              Basic
+            </div>
+            <span id="basicRate" class="fw-bold">₹ 2250 /sqft</span>
+          </label>
+
+          <label class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <input type="radio" name="packageOption" value="classic" class="form-check-input me-2">
+              Classic
+            </div>
+            <span id="classicRate" class="fw-bold">₹ 2470 /sqft</span>
+          </label>
+
+          <label class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <input type="radio" name="packageOption" value="premium" class="form-check-input me-2">
+              Premium
+            </div>
+            <span id="premiumRate" class="fw-bold">₹ 2740 /sqft</span>
+          </label>
+
+          <label class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <input type="radio" name="packageOption" value="royale" class="form-check-input me-2">
+              Royale
+            </div>
+            <span id="royaleRate" class="fw-bold">₹ 3010 /sqft</span>
+          </label>
+        </div>
+
+        <!-- Selected Package & Rate -->
+        <div class="text-center mt-4">
+          <h5 class="fw-bold">Selected Package: <span id="selectedPackage">Basic</span></h5>
+          <p id="selectedRate" class="fw-semibold text-danger">₹ 2250 /sqft (Incl. GST)</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-4">
+          <button class="px-3 py-2 border-0 bg-red-color text-white rounded-3 fw-semibold" onclick="btnOnClick()"
+            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Start Your Construction
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Script 1: Handle Package Selection -->
+<script>
+  const packageRates = {
+    basic: "₹ 2250 /sqft (Incl. GST)",
+    classic: "₹ 2470 /sqft (Incl. GST)",
+    premium: "₹ 2740 /sqft (Incl. GST)",
+    royale: "₹ 3010 /sqft (Incl. GST)"
+  };
+
+  document.querySelectorAll("input[name='packageOption']").forEach(radio => {
+    radio.addEventListener("change", function () {
+      const selected = this.value;
+      document.getElementById("selectedPackage").innerText = selected.charAt(0).toUpperCase() + selected.slice(1);
+      document.getElementById("selectedRate").innerText = packageRates[selected];
+    });
+  });
+</script>
+
+<!-- ✅ Script 2: Handle City Change -->
+<script>
+  const rates = {
+    Chennai: { basic: 2250, classic: 2470, premium: 2740, royale: 3010 },
+    Bangalore: { basic: 2300, classic: 2500, premium: 2800, royale: 3100 },
+    Hyderabad: { basic: 2200, classic: 2400, premium: 2700, royale: 3000 },
+    Mumbai: { basic: 2400, classic: 2600, premium: 2900, royale: 3200 },
+    Delhi: { basic: 2350, classic: 2550, premium: 2850, royale: 3150 }
+  };
+
+  const packageCitySelect = document.getElementById("packageCitySelect");
+  const packageSelectedCity = document.getElementById("packageSelectedCity");
+
+  packageCitySelect.addEventListener("change", function () {
+    const city = this.value;
+    packageSelectedCity.textContent = city;
+
+    // Update all package rate labels
+    document.getElementById("basicRate").textContent = `₹ ${rates[city].basic} /sqft`;
+    document.getElementById("classicRate").textContent = `₹ ${rates[city].classic} /sqft`;
+    document.getElementById("premiumRate").textContent = `₹ ${rates[city].premium} /sqft`;
+    document.getElementById("royaleRate").textContent = `₹ ${rates[city].royale} /sqft`;
+
+    // Update "selected package" price dynamically
+    const selectedPackage = document.querySelector("input[name='packageOption']:checked").value;
+    document.getElementById("selectedRate").textContent = `₹ ${rates[city][selectedPackage]} /sqft (Incl. GST)`;
+  });
+</script>
 
 
-    <script>
-        const rates = {
-            Chennai: { basic: 2250, classic: 2470, premium: 2740, royale: 3010 },
-            Bangalore: { basic: 2300, classic: 2500, premium: 2800, royale: 3100 },
-            Hyderabad: { basic: 2200, classic: 2400, premium: 2700, royale: 3000 },
-            Mumbai: { basic: 2400, classic: 2600, premium: 2900, royale: 3200 },
-            Delhi: { basic: 2350, classic: 2550, premium: 2850, royale: 3150 }
-        };
+  <script>
+    function btnOnClick() {
+      alert("hii")
+    }
+  </script>
 
-        const citySelect = document.getElementById("citySelect");
-        const selectedCity = document.getElementById("selectedCity");
 
-        citySelect.addEventListener("change", function () {
-            const city = this.value;
-            selectedCity.textContent = city;
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded-0">
+      <div class="modal-content p-3 rounded-0">
+        <div class="d-flex justify-content-between mx-3 my-2">
+          <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">Book FREE Appointment</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="d-flex justify-content-between">
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Your Email" required>
+              </div>
+            </div>
 
-            document.getElementById("basicRate").textContent = `₹ ${rates[city].basic} /sqft (Incl. GST)`;
-            document.getElementById("classicRate").textContent = `₹ ${rates[city].classic} /sqft (Incl. GST)`;
-            document.getElementById("premiumRate").textContent = `₹ ${rates[city].premium} /sqft (Incl. GST)`;
-            document.getElementById("royaleRate").textContent = `₹ ${rates[city].royale} /sqft (Incl. GST)`;
-        });
-    </script>
+            <div class="d-flex justify-content-between">
+              <div class="mb-3">
+                <input type="phone-no" class="form-control" placeholder="Phone Number" required>
+              </div>
+              <div class="mb-3">
+                <input type="city" class="form-control" placeholder="City" required>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Plot Area">
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Pinth Area">
+              </div>
+            </div>
+           
+          </form>
+        </div>
+        <div class="mb-3">
+           <div class="text-center">
+              <button type="submit" class="px-4 py-2 border-0 bg-red-color text-white rounded-3 fw-semibold">Submit</button>
+            </div>
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button> -->
+        </div>
+             <div class="border-top pt-2">
+              <h5 class="text-red-color text-center">Our experts will get back to you</h5>
+           <!-- <div class="text-center">
+              <button type="submit" class="px-4 py-2 border-0 bg-red-color text-white rounded-3 fw-semibold">Submit</button>
+            </div> -->
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
 
 
   <section class="py-5 coming-projects-section">
@@ -829,93 +955,165 @@
 
   <section class="py-5">
     <div class="container">
- <h2 class="text-center fw-bold mb-4 text-red-color">FAQs</h2>
+      <h2 class="text-center fw-bold mb-4 text-red-color">FAQs</h2>
       <div class="row row-cols-lg-2">
-   
 
-      <div class="accordion m-0 p-0" id="faqAccordion">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faqHeadingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne"
-              aria-expanded="true" aria-controls="faqCollapseOne">
-              What home construction services does Brick &amp; Bolt offer?
-            </button>
-          </h2>
-          <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne"
-            data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Brick &amp; Bolt offers end-to-end home construction services including preparation of customised plans,
-              detailed quotations, complete construction, site monitoring and quality control.
+        <div class="accordion m-0 p-0" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne"
+                aria-expanded="true" aria-controls="faqCollapseOne">
+                What home construction services does Brick &amp; Bolt offer?
+              </button>
+            </h2>
+            <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Brick &amp; Bolt offers end-to-end home construction services including preparation of customised plans,
+                detailed quotations, complete construction, site monitoring and quality control.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                How much time will it take to complete home construction in Hyderabad?
+              </button>
+            </h2>
+            <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The timeline depends on the project size and requirements. Typically, construction projects take several
+                months to complete, but a precise schedule is provided after planning and approval.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                Do I have to pay the full amount before the home construction starts?
+              </button>
+            </h2>
+            <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                No, payment is made in stages as per the construction progress. Initial booking and milestone-based
+                payments make it flexible for customers.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+                What warranty or post-construction support does Brick &amp; Bolt offer?
+              </button>
+            </h2>
+            <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Brick &amp; Bolt provides warranty and dedicated post-construction support ensuring quality and
+                durability
+                of the project.
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faqHeadingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
-              How much time will it take to complete home construction in Hyderabad?
-            </button>
-          </h2>
-          <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo"
-            data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              The timeline depends on the project size and requirements. Typically, construction projects take several
-              months to complete, but a precise schedule is provided after planning and approval.
-            </div>
-          </div>
+        <div class="m-0 p-0">
+          <img src="./images/faq-img.jpg">
         </div>
 
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faqHeadingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
-              Do I have to pay the full amount before the home construction starts?
-            </button>
-          </h2>
-          <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree"
-            data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              No, payment is made in stages as per the construction progress. Initial booking and milestone-based
-              payments make it flexible for customers.
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faqHeadingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
-              What warranty or post-construction support does Brick &amp; Bolt offer?
-            </button>
-          </h2>
-          <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour"
-            data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Brick &amp; Bolt provides warranty and dedicated post-construction support ensuring quality and durability
-              of the project.
-            </div>
-          </div>
-        </div>
       </div>
-
-      <div class="m-0 p-0">
-        <img src="./images/faq-img.jpg">
-      </div>
-
-
-      </div>
-
-  
-
     </div>
   </section>
 
 
 
+<div class="container my-5">
+  <div class="testimonial-card row g-0 bg-white">
+    
+    <!-- Left Side Image -->
+    <div class="col-lg-5 testimonial-img">
+      <img id="main-img" src="./images/test-img-1.png" alt="user">
+      <!-- <div class="rating-box">
+        <span id="main-name">Sarah M. - Brooklyn, NY</span> | ⭐ 4.9
+      </div> -->
+    </div>
+    
+    <!-- Right Side Content -->
+    <div class="col-lg-7 p-4 d-flex flex-column justify-content-between">
+      <div>
+        <small class="text-muted">RATED 4.9/5 BY 1200+ HAPPY CLIENTS</small>
+        <h5 class="fw-bold mt-2" id="main-title">The team was quick, professional, and left our home spotless</h5>
+        <p id="main-text" class="fade-up active">
+          They showed up right on time, brought all their own supplies, and cleaned places I didn’t even think of. 
+          Highly recommended for busy professionals like me.
+        </p>
+      <h6>Rating: <span class="text-warning">★★★★★</span></h6>
+      </div>
+
+       
+      <!-- Thumbnails -->
+      <div class="d-flex mt-3 thumbs gap-2">
+        <img src="./images/test-img-1.png" class="active" data-name="Sarah M. - Brooklyn, NY" 
+              data-title="The team was quick, professional, and left our home spotless" 
+             data-text="They showed up right on time, brought all their own supplies, and cleaned places I didn’t even think of. Highly recommended for busy professionals like me."
+             data-img="./images/test-img-1.png">
+        
+        <img src="./images/test-img-2.png" 
+            data-name="John D. - New York, NY" 
+             data-title="Best service I've ever used!" 
+             data-text="Super professional and friendly staff. My apartment looks amazing. I’ll definitely hire them again."
+             data-img="./images/test-img-2.png">
+        
+        <img src="./images/test-img-3.png" 
+             data-name="Emily R. - Los Angeles, CA" 
+             data-title="A true lifesaver for busy schedules" 
+             data-text="The cleaning team is always on time and super reliable. Perfect for anyone with a hectic work schedule."
+             data-img="./images/test-img-3.png">
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  
+<script>
+  const thumbs = document.querySelectorAll('.thumbs img');
+  const mainImg = document.getElementById('main-img');
+  const mainName = document.getElementById('main-name');
+  const mainTitle = document.getElementById('main-title');
+  const mainText = document.getElementById('main-text');
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      // Remove active class
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      
+      // Fade effect
+      mainText.classList.remove('active');
+      setTimeout(() => {
+        mainImg.src = thumb.getAttribute('data-img');
+        mainName.textContent = thumb.getAttribute('data-name');
+        mainTitle.textContent = thumb.getAttribute('data-title');
+        mainText.textContent = thumb.getAttribute('data-text');
+        mainText.classList.add('active');
+      }, 300);
+    });
+  });
+</script>
+
+
+
+
+
+
 
 
 
